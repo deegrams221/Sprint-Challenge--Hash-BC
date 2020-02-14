@@ -43,7 +43,12 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-
+    # find last hash proof (slice -6)
+    # encode proof
+    # use sha256
+    # if sha256 == last hash proof
+        # return TRUE
+    # else return FALSE
 
 
 if __name__ == '__main__':
@@ -51,7 +56,8 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         node = sys.argv[1]
     else:
-        node = "https://lambda-coin.herokuapp.com/api"
+        # node = "https://lambda-coin.herokuapp.com/api"
+        node - "https://lambda-coin-test-1.herokuapp.com/api"
 
     coins_mined = 0
 
