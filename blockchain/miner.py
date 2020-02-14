@@ -7,7 +7,7 @@ from uuid import uuid4
 
 from timeit import default_timer as timer
 
-import random
+from random import randint
 
 
 def proof_of_work(last_proof):
@@ -23,20 +23,24 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 0
+    proof = -200000
     #  TODO: Your code here
 
     # encode last proof
-    last_proof_encode = f"{last_proof}".encode()
-    # find proof hash
-    proof_hash = hashlib.sha256(last_proof_encode).hexdigest()
-    # while valid_proof function of proof hash, and proof is Flase, then proof += 100
-    while valid_proof(proof_hash, proof) is False:
-        proof =+ 100
+    # last_proof_encode = f'{last_proof}'.encode()
+    # # find proof hash
+    # last_hash = hashlib.sha256(last_proof_encode).hexdigest()
+    # # while valid_proof function of proof hash, and proof is Flase, then proof += 1
+
+    # while not valid_proof(last_hash, proof):
+    #     proof =+ 1
+
+    while valid_proof(last_proof, proof) is False:
+        proof -= 1
+
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
-
 
 def valid_proof(last_hash, proof):
     """
@@ -49,18 +53,20 @@ def valid_proof(last_hash, proof):
 
     # TODO: Your code here!
 
-    # find last hash proof (slice -6)
-    last_hash_proof = last_hash[-6:]
-    # encode proof
+    # encode last proof
+    last_proof = f"{last_hash}".encode()
+    # use sha256
+    last_hash = hashlib.sha256(last_proof).hexdigest()
+
+    # encode guess proof
     guess = f"{proof}".encode()
     # use sha256
     guess_hash = hashlib.sha256(guess).hexdigest()
-    # if sha256 slice 6 == last hash proof
-    if guess_hash[:6] == last_hash_proof:
-        # return TRUE
-        return True
-    # else return FALSE
-    return False
+
+    # last hash (slice -6)
+    # guess hash (slice 6)
+    # return True of False
+    return guess_hash[:6] == last_hash[-6:]
 
 
 if __name__ == '__main__':
