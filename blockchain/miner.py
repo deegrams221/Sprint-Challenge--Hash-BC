@@ -23,7 +23,7 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = -200000
+    proof = -20000000
     #  TODO: Your code here
 
     # while valid_proof(last_hash, proof) is False:
