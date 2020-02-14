@@ -25,6 +25,9 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
+    # encode last proof
+    # find proof hash
+    # while valid_proof function of proof hash, and proof is Flase, then proof += 100
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
@@ -40,7 +43,7 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+
 
 
 if __name__ == '__main__':
