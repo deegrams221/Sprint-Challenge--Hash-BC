@@ -18,16 +18,26 @@ def get_indices_of_item_weights(weights, length, limit):
     YOUR CODE HERE
     """
     # print the weights, length, and limit
+    print(f"WEIGHT: {weights}")
+    print(f"LENGTH: {length}")
+    print(f"LIMIT: {limit}")
 
     # for the index in the range of length
+    for index in range(length):
         # set check weight to hash table retrieve `limit - weight`
+        check_weight = hash_table_retrieve(ht, limit - weights[index])
         # check for None
+        if check_weight is None:
             # then return hash table insert
+            hash_table_insert(ht, weights[index], index)
             # then print
+            print(f"WEIGHT INDEX: {index} VALUE: {weights[index]}")
         # otherwise
-            # set the value equal to index, and weight check, then return value
+        else:
+            # return the index, and weight check
+            return (index, check_weight)
 
-    return None
+    # return None
 
 
 def print_answer(answer):
@@ -35,3 +45,7 @@ def print_answer(answer):
         print(str(answer[0] + " " + answer[1]))
     else:
         print("None")
+
+# test -> it works!!! HAHAH it's ALIVE!
+test_weights = [2, 4, 5, 6, 8]
+print(get_indices_of_item_weights(test_weights, 5, 21))
