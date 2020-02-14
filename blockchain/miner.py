@@ -26,14 +26,8 @@ def proof_of_work(last_proof):
     proof = -200000
     #  TODO: Your code here
 
-    # encode last proof
-    # last_proof_encode = f'{last_proof}'.encode()
-    # # find proof hash
-    # last_hash = hashlib.sha256(last_proof_encode).hexdigest()
-    # # while valid_proof function of proof hash, and proof is Flase, then proof += 1
-
-    # while not valid_proof(last_hash, proof):
-    #     proof =+ 1
+    # while valid_proof(last_hash, proof) is False:
+    #     proof += 1
 
     while valid_proof(last_proof, proof) is False:
         proof -= 1
